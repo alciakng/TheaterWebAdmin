@@ -1,0 +1,16 @@
+{
+	"paypal":{
+	  "port" : 5000,
+	  "api" : {
+	    "host" : "api.sandbox.paypal.com",
+	    "port" : "",            
+	    "client_id" : "AVrqPqYI9YhH8n9-xluXTYn7K80gzZUkkD2ocOlD9_GHQu1WHE272RSahiiiGlVeDHFVIRc_MVDv2ggp",
+	    "client_secret" : "ENpFdtkBMpVVqX90-Ng1vIrSQjHP2D3a3Z7jX43x22ifWt8KM77a7pTbJRyEpVJPHPkbHQP3hn435Nlt"
+	  }
+	},
+	"dbConfig":{
+		"user" : "kjh",
+		"password" : "kosaf46231",
+		"connectString" : "uosmoviedb.c8axvenngz2w.ap-northeast-1.rds.amazonaws.com:1521/EBDB"
+	}
+}

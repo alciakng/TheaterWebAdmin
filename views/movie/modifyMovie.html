@@ -1,0 +1,128 @@
+  {% extends '../layout/default.html' %}
+  {% block content %}
+	
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">영화수정</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                             	 수정하실 사항만 입력해주세요.
+                        </div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                   <form role="form" action='/movie/modifyMovie' method='post'>
+                                       <div class="form-group">
+                                            <label>수정할 영화 선택</label>
+                                            <select class="form-control" name='moviecode' id='selectMovie'>
+                                            	{% for movie in movies %}
+                                                <option value='{{movie.MOVIECODE}}' data-name='{{movie.NAME}}' data-genre='{{movie.GENRE}}' data-runningtime='{{movie.RUNNINGTIME}}' data-director='{{movie.DIRECTOR}}' data-rating='{{movie.RATING}}' data-company='{{movie.COMPANY}}' data-country='{{movie.COUNTRY}}' data-actors='{{movie.ACTORS}}' data-image='{{movie.IMAGE}}' data-opendate='{{movie.OPENDATE}}' data-summary ='{{movie.SUMMARY}}' >{{movie.NAME}}</option> 
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                        
+                                        <div class="form-group">
+                                            <label>영화이름</label>
+                                            <input class="form-control" name='name'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>장르</label>
+                                            <select name='genre' class="form-control">
+                                                <option value='액션'>액션</option>
+                                                <option value='호러'>호러</option>
+                                                <option value='드라마'>드라마</option>
+                                                <option value='판타지'>판타지</option>
+                                                <option value='스릴러'>스릴러</option>
+                                                <option value='코믹'>코믹</option>
+                                                <option value='로맨스'>로맨스</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>상영시간</label>
+                                            <input class="form-control" name='runningtime'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>감독</label>
+                                            <input class="form-control" name='director'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>관람등급</label>
+                                            <input class="form-control" name='rating'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>배급사</label>
+                                            <input class="form-control" name='company'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>국가</label>
+                                            <input class="form-control" name='country'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>배우들</label>
+                                            <input class="form-control" name='actors'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>이미지 파일</label>
+                                            <input type="file" name='image'>
+                                        </div>
+                                        <div class="form-group">
+                                            <label>개봉일</label>
+                                            <input class="form-control" type='text' id='datepicker' name='opendate'>
+                                        </div>
+        
+                                        <div class="form-group">
+                                            <label>설명</label>
+                                            <textarea name='summary' class="form-control" rows="6"></textarea>
+                                        </div>
+                                       
+                                        <button type="submit" class="btn btn-default">등록하기</button>
+                                        <button type="reset" class="btn btn-default">초기화</button>
+                                    </form>
+                                </div>
+                            
+                            </div>
+                            <!-- /.row (nested) -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+        </div>
+	{%endblock %}
+	{% block customScript %}
+		<script>
+			$(function(){
+		
+				 $( "#datepicker" ).datepicker({
+				    	dateFormat: 'yy-mm-dd'
+				    });
+				 
+				$( "#selectMovie" )
+				  .change(function () {
+				    $("input[name='name']").attr('placeholder',$( "select option:selected" ).attr('data-name'));
+				    $("select[name='genre']").attr('placeholder',$( "select option:selected" ).attr('data-genre'));
+				    $("input[name='runningtime']").attr('placeholder',$( "select option:selected" ).attr('data-runningtime'));
+				    $("input[name='director']").attr('placeholder',$( "select option:selected" ).attr('data-director'));
+				    $("input[name='rating']").attr('placeholder',$( "select option:selected" ).attr('data-rating'));
+				    $("input[name='company']").attr('placeholder',$( "select option:selected" ).attr('data-company'));
+				   
+				    $("input[name='country']").attr('placeholder',$( "select option:selected" ).attr('data-country'));
+				    $("input[name='actors']").attr('placeholder',$( "select option:selected" ).attr('data-actors'));
+				   
+				    $("input[name='opendate']").attr('placeholder',$( "select option:selected" ).attr('data-opendate'));
+				    $("textarea[name='summary']").attr('placeholder',$( "select option:selected" ).attr('data-summary'));
+				    
+				  })
+			})
+		</script>
+	{% endblock %}
