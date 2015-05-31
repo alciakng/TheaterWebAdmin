@@ -1,0 +1,221 @@
+  {% extends '../layout/default.html' %}
+  {% block content %}
+        <!-- Navigation -->
+        
+        <div id="page-wrapper">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">영화관 관리</h1>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12 text-right">
+                                    <div class="huge">기간통계</div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/statistics/byPeriodPage">
+                            <div class="panel-footer">
+                                <span class="pull-left">자세히 보기</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-green">
+                        <div class="panel-heading">
+                            <div class="row">
+                                <div class="col-xs-12 text-right">
+                                    <div class="huge">영화통계</div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/statistics/byMoviePage">
+                            <div class="panel-footer">
+                                <span class="pull-left">자세히 보기</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-yellow">
+                        <div class="panel-heading">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <div class="huge">성별통계</div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/statistics/bySexPage">
+                            <div class="panel-footer">
+                                <span class="pull-left">자세히 보기</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="panel panel-red">
+                        <div class="panel-heading">
+                            <div class="row">
+
+                                <div class="col-xs-12 text-right">
+                                    <div class="huge">스크린통계</div>
+                                    <div></div>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="/statistics/byScreenPage">
+                            <div class="panel-footer">
+                                <span class="pull-left">자세히 보기</span>
+                                <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                <div class="clearfix"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-list"></i> 현재 상영중인 영화들
+                            <div class="pull-right">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                        	영화관리
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu pull-right" role="menu">
+                                        <li><a href="movie/addPage">영화등록</a>
+                                        </li>
+                                        <li><a href="movie/modifyPage">영화수정</a>
+                                        </li>
+                                        <li><a href="movie/deletePage">영화삭제</a>
+                                        </li>
+                                       
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="list-group">
+                               {% for movie in movies %}
+                                <a href="#" class="list-group-item">
+                                     {{movie.NAME}}
+                                    <span class="pull-right text-muted small"><em>{{moive.OPENDATE}}</em>
+                                    </span>
+                                </a>
+                               {% endfor %}
+                               
+                            </div>
+                            <!-- /.list-group -->
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+               
+                </div>
+                <!-- /.col-lg-8 -->
+                <div class="col-lg-4">
+                		<div class="chat-panel panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-comments fa-fw"></i>
+                             관리자 채팅
+                            <div class="btn-group pull-right">
+                                <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                                    <i class="fa fa-chevron-down"></i>
+                                </button>
+                                <ul class="dropdown-menu slidedown">
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-refresh fa-fw"></i> Refresh
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-check-circle fa-fw"></i> Available
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-times fa-fw"></i> Busy
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-clock-o fa-fw"></i> Away
+                                        </a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="#">
+                                            <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" id='msgs'>
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                        <div class="panel-footer">
+                            <div class="input-group">
+                                <input type="text" class="form-control input-sm" id="msgbox" placeholder="메세지를 입력하세요">
+                                <span class="input-group-btn">
+                                    <button class="btn btn-warning btn-sm" id="btn-chat">
+                                        	보내기
+                                    </button>
+                                </span>
+                            </div>
+                        </div>
+                        <!-- /.panel-footer -->
+                    </div>
+                </div>
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+{% endblock %}
+{% block customScript %}
+ <script type="text/javascript">
+    $(function(){
+       var socket = io.connect('http://localhost:4938');
+       
+       $("#msgbox").keyup(function(event) {
+           if (event.which == 13) {
+               socket.emit('fromclient',{msg:$('#msgbox').val()});
+               $('#msgbox').val('');
+           }
+       });
+       
+       
+       
+       socket.on('toclient',function(data){
+           console.log(data.msg);
+           $('#msgs').append('<span>'+data.msg+'</span><BR>');
+       });
+     })
+    </script>
+{% endblock %}

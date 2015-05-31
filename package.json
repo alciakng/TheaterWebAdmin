@@ -18,6 +18,7 @@
     "passport-twitter":"*",
     "paypal-rest-sdk":"*",
     "view-helpers":"*",
-    "oracledb":"*"
+    "oracledb":"*",
+    "socket.io":"*"
   }
 }

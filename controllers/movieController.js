@@ -18,7 +18,6 @@ exports.addMovie = function(req,res){
 		//영화추가
 		var add_movie = "begin ADDMOVIE(:name,:genre,:runningtime,:director,:rating,:company,:country,:actors,:image,to_date(:opendate,'yy-mm-dd'),:summary);END;"
   	
-		
 		oracledb.getConnection(dbConfig,
 				function(err,connection){
 					 if (err) {

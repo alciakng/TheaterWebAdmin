@@ -2,10 +2,34 @@ $(function() {
 
 	var d = new Date();
 	
-	$( "#chooseYear" ).datepicker({
-	      showWeek: true,
-	      firstDay: 1
-	});
+	$('#yearSelect').datepicker({
+		  format: "yy", // Notice the Extra space at the beginning
+		  viewMode: "years", 
+		  minViewMode: "years",
+		  autoclose: true
+	}).on('changeDate', function(e){
+		$('#byYear').empty();
+		getStatisticBySex('byYear','year',e.format('yy'));
+
+  });
+	
+	$('#monthSelect').datepicker({
+		  format: "yy-mm", // Notice the Extra space at the beginning
+		  viewMode: "months", 
+		  minViewMode: "months",
+		  autoclose: true
+	}).on('changeDate', function(e){
+		$('#byMonth').empty();
+		getStatisticBySex('byMonth','month',e.format('yy-mm'));
+  });
+	
+	$('#daySelect').datepicker({
+		  format: "yy-mm-dd", // Notice the Extra space at the beginning
+		  autoclose: true
+	}).on('changeDate', function(e){
+		$('#byDay').empty();
+		getStatisticBySex('byDay','day',e.format('yy-mm-dd'));
+  });
 	
 	getStatisticBySex('byYear','year',d.toISOString().substr(2,2));
 	getStatisticBySex('byMonth','month',d.toISOString().substr(2,5));

@@ -24,20 +24,20 @@ exports.byPeriod =function(req,res){
 	
 	
 	switch(req.param('criteria')){
-	case 'year':
-		console.log('year');
-		sql = year_period;
-		break;
-	case 'month':
-		console.log('month');
-		sql = month_period;
-		bindvars.y=req.param('date');
-		break;
-	case 'day':
-		console.log('day');
-		sql = day_period;
-		bindvars.ym=req.param('date');
-		break;
+		case 'YEAR':
+			console.log('year');
+			sql = year_period;
+			break;
+		case 'MONTH':
+			console.log('month');
+			sql = month_period;
+			bindvars.y=req.param('date');
+			break;
+		case 'DAY':
+			console.log('day');
+			sql = day_period;
+			bindvars.ym=req.param('date');
+			break;
 	}
 	
 	console.log(bindvars);

@@ -9,6 +9,7 @@ $(function() {
 		  minViewMode: "years",
 		  autoclose: true
 	}).on('changeDate', function(e){
+		$('#byYear').empty();
 		getStatisticByMovie('byYear','year',e.format('yy'));
 
     });
@@ -19,6 +20,7 @@ $(function() {
 		  minViewMode: "months",
 		  autoclose: true
 	}).on('changeDate', function(e){
+		$('#byMonth').empty();
 		getStatisticByMovie('byMonth','month',e.format('yy-mm'));
     });
 	
@@ -26,6 +28,7 @@ $(function() {
 		  format: "yy-mm-dd", // Notice the Extra space at the beginning
 		  autoclose: true
 	}).on('changeDate', function(e){
+		$('#byDay').empty();
 		getStatisticByMovie('byDay','day',e.format('yy-mm-dd'));
     });
 	

@@ -3,16 +3,31 @@ $(function() {
 	
 	var d = new Date();
 	
-	$( "#chooseYear" ).datepicker({
-	      showWeek: true,
-	      firstDay: 1
-	});
+
+	
+	$('#yearSelect').datepicker({
+		  format: "yy", // Notice the Extra space at the beginning
+		  viewMode: "months", 
+		  minViewMode: "months",
+		  autoclose: true
+	}).on('changeDate', function(e){
+		$('#byMonth').empty();
+		getStatisticByPeriod('byMonth','month',e.format('yy'));
+  });
+	
+	$('#monthSelect').datepicker({
+		  format: "yy-mm", // Notice the Extra space at the beginning
+		  autoclose: true
+	}).on('changeDate', function(e){
+		$('#byDay').empty();
+		getStatisticByPeriod('byDay','day',e.format('yy-mm'));
+  });
 	
 	
 	
-	getStatisticByPeriod('byYear','year','');
-	getStatisticByPeriod('byMonth','month',d.toISOString().substr(2,5));
-	getStatisticByPeriod('byDay','day',d.toISOString().substr(2,8));
+	getStatisticByPeriod('byYear','YEAR','');
+	getStatisticByPeriod('byMonth','MONTH',d.toISOString().substr(2,2));
+	getStatisticByPeriod('byDay','DAY',d.toISOString().substr(2,5));
 	
 	
 
@@ -22,10 +37,11 @@ $(function() {
 function getStatisticByPeriod(element,criteria,date){
 
 	$.get( "/statistics/byPeriod",{ criteria:criteria,date:date}).done(function( data ) {
+
 		Morris.Line({
 			  element: element,
 			  data: data,
-			  xkey: 'YEAR',
+			  xkey: criteria,
 			  ykeys: ['SUM','COUNT'],
 			  labels: ['총 판매액', '예매횟수']
 			});

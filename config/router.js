@@ -6,13 +6,14 @@
 var indexController = controllers('indexController.js');
 var statisticsController = controllers('statisticsController.js');
 var movieController = controllers('movieController.js');
+var timeController = controllers('timeController.js');
 
 module.exports = function(app){
 	
 	//index-router
-		app.get('/',indexController.index);
-	
-	
+	    app.get('/',indexController.authPage);
+	    app.post('/auth',indexController.auth)
+		app.get('/index',indexController.index);
 	
 	//statistics-router
 		//app.get('/statistics/byAge',statisticsController.byAge);
@@ -34,15 +35,12 @@ module.exports = function(app){
 		app.post('/movie/modifyMovie',movieController.modifyMovie);
 		app.post('/movie/deleteMovie',movieController.deleteMovie);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+    //time-router
+		app.get('/time/addPage',timeController.addPage);
+		app.get('/time/modifyPage',timeController.modifyPage);
+		app.get('/time/deletePage',timeController.deletePage);
+		app.post('/time/addTime',timeController.addTime);
+		//app.post('/time/modifyTime',timController.modifyTime);
+		//app.post('/time/deleteTime',timController.deleteTime);
 		
 };
