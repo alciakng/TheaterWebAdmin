@@ -35,7 +35,7 @@ app.use(app.router);
 app.use(express.static(path.join(__dirname, 'public')));
 
 // development only
-app.set('port', process.env.PORT || 4938);
+app.set('port', process.env.PORT || 3000);
 app.engine('html', swig.renderFile);
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');
