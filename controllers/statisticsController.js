@@ -22,6 +22,8 @@ exports.byPeriod =function(req,res){
 	var sql;
 	var bindvars = {};
 	
+	console.log(req.param('date'));
+	console.log(req.param('criteria'));
 	
 	switch(req.param('criteria')){
 		case 'YEAR':

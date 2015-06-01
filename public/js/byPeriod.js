@@ -4,23 +4,24 @@ $(function() {
 	var d = new Date();
 	
 
-	
 	$('#yearSelect').datepicker({
 		  format: "yy", // Notice the Extra space at the beginning
-		  viewMode: "months", 
-		  minViewMode: "months",
+		  viewMode: "years", 
+		  minViewMode: "years",
 		  autoclose: true
 	}).on('changeDate', function(e){
 		$('#byMonth').empty();
-		getStatisticByPeriod('byMonth','month',e.format('yy'));
+		getStatisticByPeriod('byMonth','MONTH',e.format('yy'));
   });
 	
 	$('#monthSelect').datepicker({
 		  format: "yy-mm", // Notice the Extra space at the beginning
+		  viewMode: "months", 
+		  minViewMode: "months",
 		  autoclose: true
 	}).on('changeDate', function(e){
 		$('#byDay').empty();
-		getStatisticByPeriod('byDay','day',e.format('yy-mm'));
+		getStatisticByPeriod('byDay','DAY',e.format('yy-mm'));
   });
 	
 	

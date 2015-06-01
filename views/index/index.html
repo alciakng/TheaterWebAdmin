@@ -210,9 +210,14 @@
            }
        });
        
+       $("#btn-chat").click(function(){
+    	   socket.emit('fromclient',{msg:$('#msgbox').val()});
+           $('#msgbox').val('');
+       });
+       
        socket.on('toclient',function(data){
            console.log(data.msg);
-           $('#msgs').append('<span>'+data.msg+'</span><BR>');
+           $('#msgs').append('<span>'+data.msg+'</span><br>');
        });
      })
     </script>

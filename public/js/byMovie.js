@@ -3,6 +3,7 @@ $(function() {
 	
 	var d = new Date();
 
+	
 	$('#yearSelect').datepicker({
 		  format: "yy", // Notice the Extra space at the beginning
 		  viewMode: "years", 
