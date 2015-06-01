@@ -45,8 +45,8 @@ function getStatisticBySex(element,criteria,date){
 		Morris.Donut({
 			  element: element,
 			  data: [
-			         {label: "남", value: (data[0]? data[0].VALUE : 0 )},
-			         {label: "여", value: (data[1]? data[1].VALUE : 0 )}
+			         {label: (data[0]?data[0].LABEL : '남'), value: (data[0]? data[0].VALUE : 0 )},
+			         {label: (data[1]?data[1].LABEL : '여'), value: (data[1]? data[1].VALUE : 0 )}
 			       ]
 			});
 	});
