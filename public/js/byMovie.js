@@ -8,7 +8,7 @@ $(function() {
 		  format: "yy", // Notice the Extra space at the beginning
 		  viewMode: "years", 
 		  minViewMode: "years",
-		  autoclose: true
+		  autoclose: true,
 	}).on('changeDate', function(e){
 		$('#byYear').empty();
 		getStatisticByMovie('byYear','year',e.format('yy'));
