@@ -6,6 +6,7 @@
 global.controllers = function(name) {
     return require(__dirname + '/controllers/' + name);
 }
+
 global.config = function(name) {
     return require(__dirname + '/config/' + name);
 }

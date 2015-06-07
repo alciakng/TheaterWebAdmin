@@ -67,6 +67,7 @@ $(function() {
 function getStatisticByScreen(element,criteria,date){
 
 	$.get( "/statistics/byScreen",{ criteria:criteria,date:date}).done(function( data ) {
+		/*
 		Morris.Bar({
 			  element: element,
 			  data: data,
@@ -74,6 +75,42 @@ function getStatisticByScreen(element,criteria,date){
 			  ykeys: ['SUM','COUNT'],
 			  labels: ['총 판매액', '예매횟수']
 			});
+			*/
+		var chart = AmCharts.makeChart( element, {
+			  "type": "pie",
+			  "theme": "light",
+			  "path": "http://www.amcharts.com/lib/3/",
+			  "titles": [ {
+			    "text": "스크린별 통계",
+			    "size": 30
+			  } ],
+			  "dataProvider": data,
+			  "valueField": "SUM",
+			  "titleField": "SCREENNAME",
+			  "startEffect": "elastic",
+			  "startDuration": 2,
+			  "labelRadius": 15,
+			  "innerRadius": "50%",
+			  "depth3D": 10,
+			  "balloonText": "[[title]]<br><span style='font-size:14px'><b>[[value]]</b> ([[percents]]%)</span>",
+			  "angle": 15,
+			  "export": {
+			    "enabled": true
+			  }
+			} );
+			jQuery( '.chart-input' ).off().on( 'input change', function() {
+			  var property = jQuery( this ).data( 'property' );
+			  var target = chart;
+			  var value = Number( this.value );
+			  chart.startDuration = 0;
+
+			  if ( property == 'innerRadius' ) {
+			    value += "%";
+			  }
+
+			  target[ property ] = value;
+			  chart.validateNow();
+			} );
 	});
 	
 }
