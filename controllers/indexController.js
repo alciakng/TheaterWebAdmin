@@ -18,12 +18,11 @@ exports.auth = function(req,res){
 	
 	if(code!='1234')
 		res.redirect('/');
+	
 	else {
 		req.session
 		res.redirect('/index');
 	}
-	
-	
 }
 
 

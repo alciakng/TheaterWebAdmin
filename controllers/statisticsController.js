@@ -16,8 +16,8 @@ exports.byPeriodPage =function(req,res){
 exports.byPeriod =function(req,res){
 
 	var year_period = "select count(b.totalprice) as count,sum(b.totalprice) as sum,TO_CHAR(t.moviedate,'yy') as year from booking b, time t where t.timecode =b.timecode group by TO_CHAR(t.moviedate,'yy')";
-	var month_period = "select count(b.totalprice) as count,sum(b.totalprice) as sum,TO_CHAR(t.moviedate,'mm') as month from booking b, time t where t.timecode =b.timecode and TO_CHAR(t.moviedate,'yy')=:y group by TO_CHAR(t.moviedate,'mm')";
-	var day_period ="select count(b.totalprice) as count,sum(b.totalprice) as sum,TO_CHAR(t.moviedate,'dd') as day from booking b, time t where t.timecode =b.timecode and TO_CHAR(t.moviedate,'yy-mm')=:ym group by TO_CHAR(t.moviedate,'dd')";
+	var month_period = "select count(b.totalprice) as count,sum(b.totalprice) as sum,TO_CHAR(t.moviedate,'mm') as month from booking b, time t where t.timecode =b.timecode and TO_CHAR(t.moviedate,'yy')=:y group by TO_CHAR(t.moviedate,'mm') order by TO_CHAR(t.moviedate,'mm')";
+	var day_period ="select count(b.totalprice) as count,sum(b.totalprice) as sum,TO_CHAR(t.moviedate,'dd') as day from booking b, time t where t.timecode =b.timecode and TO_CHAR(t.moviedate,'yy-mm')=:ym group by TO_CHAR(t.moviedate,'dd') order by TO_CHAR(t.moviedate,'dd')";
 		
 	var sql;
 	var bindvars = {};
