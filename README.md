@@ -3,7 +3,7 @@
 # TheaterWebAdmin
 
 http://52.69.16.96:3000/
-
+관리자 코드 : 1234
 ## Usage
 
 
